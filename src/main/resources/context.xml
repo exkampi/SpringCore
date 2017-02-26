@@ -3,8 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="t1000" class="home.javabegin.training.spring.impls.robot.ModelT1000">
+    <bean id="sonyHead" class="home.javabegin.training.spring.impls.sony.SonyHead"/>
+    <bean id="sonyHand" class="home.javabegin.training.spring.impls.sony.SonyHand"/>
+    <bean id="sonyLeg" class="home.javabegin.training.spring.impls.sony.SonyLeg"/>
 
+    <bean id="toshibaHead" class="home.javabegin.training.spring.impls.toshiba.ToshibaHead"/>
+    <bean id="toshibaHand" class="home.javabegin.training.spring.impls.toshiba.ToshibaHand"/>
+    <bean id="toshibaLeg" class="home.javabegin.training.spring.impls.toshiba.ToshibaLeg"/>
+
+    <bean id="t1000" class="home.javabegin.training.spring.impls.robot.ModelT1000">
+        <constructor-arg ref="sonyHand"/>
+        <constructor-arg ref="toshibaLeg"/>
+        <constructor-arg ref="toshibaHead"/>
     </bean>
 
 </beans>
