@@ -1,7 +1,7 @@
 package home.javabegin.training.spring.interfaces;
 
-public interface Hand {
+public interface Hands {
 	
-	public void catchSomething();
+	void catchSomething();
 
 }

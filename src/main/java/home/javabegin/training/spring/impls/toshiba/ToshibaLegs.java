@@ -1,8 +1,8 @@
 package home.javabegin.training.spring.impls.toshiba;
 
-import home.javabegin.training.spring.interfaces.Leg;
+import home.javabegin.training.spring.interfaces.Legs;
 
-public class ToshibaLeg implements Leg {
+public class ToshibaLegs implements Legs {
 	
 	public void go(){
 		System.out.println("Go to Toshiba!");

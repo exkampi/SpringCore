@@ -1,31 +1,55 @@
 package home.javabegin.training.spring.impls.robot;
 
-import home.javabegin.training.spring.interfaces.Hand;
+import home.javabegin.training.spring.interfaces.Hands;
 import home.javabegin.training.spring.interfaces.Head;
-import home.javabegin.training.spring.interfaces.Leg;
+import home.javabegin.training.spring.interfaces.Legs;
 import home.javabegin.training.spring.interfaces.Robot;
 
 public class ModelT1000 implements Robot {
 
-	private Hand hand;
-	private Leg leg;
+	private Hands hands;
+	private Legs legs;
 	private Head head;
 
-	public ModelT1000() {
+    public Hands getHands() {
+        return hands;
+    }
+
+    public void setHands(Hands hands) {
+        this.hands = hands;
+    }
+
+    public Legs getLegs() {
+        return legs;
+    }
+
+    public void setLegs(Legs legs) {
+        this.legs = legs;
+    }
+
+    public Head getHead() {
+        return head;
+    }
+
+    public void setHead(Head head) {
+        this.head = head;
+    }
+
+    public ModelT1000() {
 	}
 
-	public ModelT1000(Hand hand, Leg leg, Head head) {
+	public ModelT1000(Hands hands, Legs legs, Head head) {
 		super();
-		this.hand = hand;
-		this.leg = leg;
+		this.hands = hands;
+		this.legs = legs;
 		this.head = head;
 	}
 
 	@Override
 	public void action() {
 		head.calc();
-		hand.catchSomething();
-		leg.go();
+		hands.catchSomething();
+		legs.go();
 	}
 
 	@Override

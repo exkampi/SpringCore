@@ -1,7 +1,7 @@
 package home.javabegin.training.spring.interfaces;
 
-public interface Leg {
+public interface Legs {
 	
-	public void go();
+	void go();
 
 }
