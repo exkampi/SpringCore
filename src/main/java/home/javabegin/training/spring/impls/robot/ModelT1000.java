@@ -11,7 +11,35 @@ public class ModelT1000 implements Robot {
 	private Legs legs;
 	private Head head;
 
-    public Hands getHands() {
+	private String color;
+	private int year;
+	private boolean soundEnable;
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public boolean isSoundEnable() {
+		return soundEnable;
+	}
+
+	public void setSoundEnable(boolean soundEnable) {
+		this.soundEnable = soundEnable;
+	}
+
+	public Hands getHands() {
         return hands;
     }
 
@@ -45,11 +73,29 @@ public class ModelT1000 implements Robot {
 		this.head = head;
 	}
 
+	public ModelT1000(String color, int year, boolean soundEnable) {
+		this.color = color;
+		this.year = year;
+		this.soundEnable = soundEnable;
+	}
+
+	public ModelT1000(Hands hands, Legs legs, Head head, String color, int year, boolean soundEnable) {
+		this.hands = hands;
+		this.legs = legs;
+		this.head = head;
+		this.color = color;
+		this.year = year;
+		this.soundEnable = soundEnable;
+	}
+
 	@Override
 	public void action() {
 		head.calc();
 		hands.catchSomething();
 		legs.go();
+		System.out.println("color: " + color);
+		System.out.println("year: " + year);
+		System.out.println("can play sound: " + soundEnable);
 	}
 
 	@Override
