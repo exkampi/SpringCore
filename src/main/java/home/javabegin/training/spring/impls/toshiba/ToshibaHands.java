@@ -8,4 +8,11 @@ public class ToshibaHands implements Hands {
 		System.out.println("Catched from Toshiba!");
 	}
 
+	public void init() {
+		System.out.println("Init ToshibaHands");
+	}
+
+	public void destroy() {
+		System.out.println("Destroy ToshibaHands");
+	}
 }

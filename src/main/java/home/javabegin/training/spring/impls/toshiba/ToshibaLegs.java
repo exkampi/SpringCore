@@ -8,4 +8,11 @@ public class ToshibaLegs implements Legs {
 		System.out.println("Go to Toshiba!");
 	}
 
+	public void init() {
+		System.out.println("Init ToshibaLegs");
+	}
+
+	public void destroy() {
+		System.out.println("Destroy ToshibaLegs");
+	}
 }

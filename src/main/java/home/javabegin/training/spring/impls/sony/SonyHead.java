@@ -8,4 +8,11 @@ public class SonyHead implements Head{
 		System.out.println("Thinking about Sony...");
 	}
 
+	public void init() {
+		System.out.println("Init SonyHead");
+	}
+
+	public void destroy() {
+		System.out.println("Destroy SonyHead");
+	}
 }

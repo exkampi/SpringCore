@@ -8,4 +8,11 @@ public class SonyLegs implements Legs {
 		System.out.println("Go to Sony!");
 	}
 
+	public void init() {
+		System.out.println("Init SonyLegs");
+	}
+
+	public void destroy() {
+		System.out.println("Destroy SonyLegs");
+	}
 }
