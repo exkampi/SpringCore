@@ -3,18 +3,20 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
-default-lazy-init="true"
-default-init-method="init"
-default-destroy-method="destroy">
+       default-lazy-init="true"
+       default-init-method="init"
+       default-destroy-method="destroy">
 
     <import resource="sony_context.xml"/>
     <import resource="toshiba_context.xml"/>
+    <import resource="db_context.xml"/>
 
     <bean id="t1000" class="home.javabegin.training.spring.impls.robot.ModelT1000"
           p:hands-ref="toshibaHand"
           p:head-ref="toshibaHead"
           p:legs-ref="toshibaLeg"
-    >
+        depends-on="databaseBean">
+
         <constructor-arg index="0" value="silver" type="java.lang.String"/>
         <constructor-arg index="1" value="2006" type="int"/>
         <constructor-arg index="2" value="true" type="boolean"/>
