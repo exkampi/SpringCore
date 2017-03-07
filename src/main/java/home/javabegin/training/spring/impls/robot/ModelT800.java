@@ -3,55 +3,44 @@ package home.javabegin.training.spring.impls.robot;
 import home.javabegin.training.spring.interfaces.Hands;
 import home.javabegin.training.spring.interfaces.Head;
 import home.javabegin.training.spring.interfaces.Legs;
-import home.javabegin.training.spring.interfaces.Robot;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class ModelT800 implements Robot, InitializingBean, DisposableBean{
+public class ModelT800 extends BaseModel implements InitializingBean, DisposableBean{
 
-    private Hands hands;
-    private Legs legs;
-    private Head head;
-
-    public Hands getHands() {
-        return hands;
-    }
-
-    public void setHands(Hands hands) {
-        this.hands = hands;
-    }
-
-    public Legs getLegs() {
-        return legs;
-    }
-
-    public void setLegs(Legs legs) {
-        this.legs = legs;
-    }
-
-    public Head getHead() {
-        return head;
-    }
-
-    public void setHead(Head head) {
-        this.head = head;
-    }
+    private String color;
+    private int year;
+    private boolean soundEnabled;
 
     public ModelT800() {
     }
 
     public ModelT800(Hands hands, Legs legs, Head head) {
+        super(hands, legs, head);
+    }
 
-        this.hands = hands;
-        this.legs = legs;
-        this.head = head;
+    public ModelT800(String color, int year, boolean soundEnabled) {
+        this.color = color;
+        this.year = year;
+        this.soundEnabled = soundEnabled;
+    }
+
+    public ModelT800(Hands hands, Legs legs, Head head, String color, int year, boolean soundEnabled) {
+
+        super(hands, legs, head);
+        this.color = color;
+        this.year = year;
+        this.soundEnabled = soundEnabled;
     }
 
     @Override
     public void action() {
-        hands.catchSomething();
-        legs.go();
-        head.calc();
+        getHead().calc();
+        getHands().catchSomething();
+        getLegs().go();
+        System.out.println("color: " + color);
+        System.out.println("year: " + year);
+        System.out.println("can play sound: " + soundEnabled);
     }
 
     @Override

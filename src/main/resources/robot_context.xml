@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true"
@@ -36,7 +36,13 @@
     </bean>
 
     <bean id="t800" class="home.javabegin.training.spring.impls.robot.ModelT800"
-          c:hands-ref="toshibaHand"
-          c:head-ref="sonyHead"
-          c:legs-ref="toshibaLeg"/>
+        parent="baseModel">
+        <property name="head" ref="sonyHead"/>
+    </bean>
+
+    <bean id="baseModel" abstract="true">
+        <constructor-arg ref="toshibaHand"/>
+        <constructor-arg ref="toshibaLeg"/>
+        <constructor-arg ref="toshibaHead"/>
+    </bean>
 </beans>

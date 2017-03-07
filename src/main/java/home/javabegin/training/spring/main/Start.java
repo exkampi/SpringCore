@@ -13,10 +13,10 @@ public class Start {
 		ModelT1000 t1000;
 		ModelT800 t800;
 
-		t1000 = (ModelT1000) context.getBean("t1000");
-		System.out.println(t1000);
-
 		t800 = (ModelT800) context.getBean("t800");
+
+//		t1000 = (ModelT1000) context.getBean("t1000");
+//		System.out.println(t1000);
 
 //		t1000 = (ModelT1000) context.getBean("t1000Empty");
 //		System.out.println(t1000);
