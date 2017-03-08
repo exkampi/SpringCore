@@ -8,4 +8,8 @@
     <import resource="robot_context.xml"/>
 
     <bean class="home.javabegin.training.spring.postProcessors.MyBeanPostProcessor"/>
+
+    <bean id="t1000Conveyor" class="home.javabegin.training.spring.impls.conveyor.T1000Conveyor">
+        <lookup-method name="createRobot" bean="t1000"/>
+    </bean>
 </beans>

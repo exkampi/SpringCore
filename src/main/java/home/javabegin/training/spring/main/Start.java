@@ -1,30 +1,28 @@
 package home.javabegin.training.spring.main;
 
-import home.javabegin.training.spring.impls.robot.ModelT800;
+import home.javabegin.training.spring.interfaces.Robot;
+import home.javabegin.training.spring.interfaces.RobotConveyor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import home.javabegin.training.spring.impls.robot.ModelT1000;
 
 public class Start {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("all_context.xml");
 
-		ModelT1000 t1000;
-		ModelT800 t800;
+		RobotConveyor t1000Conveyor;
+		t1000Conveyor = (RobotConveyor) context.getBean("t1000Conveyor");
 
-		t800 = (ModelT800) context.getBean("t800");
+		Robot terminator1 = t1000Conveyor.createRobot();
+		Robot terminator2 = t1000Conveyor.createRobot();
+		Robot terminator3 = t1000Conveyor.createRobot();
 
-//		t1000 = (ModelT1000) context.getBean("t1000");
-//		System.out.println(t1000);
+		System.out.println("terminator1 " + terminator1);
+		System.out.println("terminator2 " + terminator2);
+		System.out.println("terminator3 " + terminator3);
 
-//		t1000 = (ModelT1000) context.getBean("t1000Empty");
-//		System.out.println(t1000);
-
-//		t1000 = (ModelT1000) context.getBean("t1000");
-//		System.out.println(t1000);
-
-//		t1000 = (ModelT1000) context.getBean("t1000");
-//		System.out.println(t1000);
+		terminator1.action();
+		terminator2.action();
+		terminator3.action();
 	}
 }

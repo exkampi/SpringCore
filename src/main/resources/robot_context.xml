@@ -11,15 +11,19 @@
     <import resource="toshiba_context.xml"/>
     <import resource="db_context.xml"/>
 
+    <bean id="actionReplacer" class="home.javabegin.training.spring.impls.robot.ActionReplacer"/>
+
     <bean id="t1000" class="home.javabegin.training.spring.impls.robot.ModelT1000"
           p:hands-ref="toshibaHand"
           p:head-ref="toshibaHead"
           p:legs-ref="toshibaLeg"
-        depends-on="databaseBean">
+        scope="prototype">
 
         <constructor-arg index="0" value="silver" type="java.lang.String"/>
         <constructor-arg index="1" value="2006" type="int"/>
         <constructor-arg index="2" value="true" type="boolean"/>
+
+        <replaced-method name="action" replacer="actionReplacer"/>
 
         <!--<property name="hands" ref="sonyHand"/>-->
         <!--<property name="legs" ref="sonyLeg"/>-->
@@ -36,7 +40,8 @@
     </bean>
 
     <bean id="t800" class="home.javabegin.training.spring.impls.robot.ModelT800"
-        parent="baseModel">
+          parent="baseModel"
+          depends-on="databaseBean">
         <property name="head" ref="sonyHead"/>
     </bean>
 
