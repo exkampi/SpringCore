@@ -18,7 +18,7 @@ public class T1000Pool implements RobotPool {
         return robotCollection;
     }
 
-    public void action() {
+    public void beginShow() {
         for (Robot robot : robotCollection) {
             robot.action();
         }

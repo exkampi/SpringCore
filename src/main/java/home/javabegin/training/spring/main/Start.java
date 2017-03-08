@@ -11,8 +11,8 @@ public class Start {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("all_context.xml");
 
-		T1000Pool t1000Pool = (T1000Pool) context.getBean("t1000Pool");
-		t1000Pool.action();
+		T1000Pool t1000Pool = (T1000Pool) context.getBean("t1000GoldenPool");
+		t1000Pool.beginShow();
 
 //		RobotConveyor t1000Conveyor;
 //		t1000Conveyor = (RobotConveyor) context.getBean("t1000Conveyor");
