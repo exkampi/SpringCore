@@ -30,24 +30,30 @@
         <!--<property name="head" ref="sonyHead"/>-->
     </bean>
 
-    <bean id="t1000Empty" class="home.javabegin.training.spring.impls.robot.ModelT1000"
-          scope="prototype"
-          init-method="init"
-          destroy-method="destroy">
-        <constructor-arg ref="sonyHand"/>
-        <constructor-arg ref="sonyLeg"/>
-        <constructor-arg ref="sonyHead"/>
-    </bean>
-
     <bean id="t800" class="home.javabegin.training.spring.impls.robot.ModelT800"
           parent="baseModel"
           depends-on="databaseBean">
         <property name="head" ref="sonyHead"/>
     </bean>
 
+    <bean id="t1000Pool" class="home.javabegin.training.spring.impls.robot.pool.T1000Pool">
+        <property name="robotCollection">
+            <list>
+                <ref bean="t1000"/>
+                <ref bean="t800"/>
+                <bean class="home.javabegin.training.spring.impls.robot.ModelT1000" parent="baseModel">
+                    <constructor-arg value="Gold" type="java.lang.String"/>
+                    <constructor-arg value="2007" type="int"/>
+                    <constructor-arg value="false" type="boolean"/>
+                </bean>
+                <!--<null/>-->
+            </list>
+        </property>
+    </bean>
+
     <bean id="baseModel" abstract="true">
-        <constructor-arg ref="toshibaHand"/>
-        <constructor-arg ref="toshibaLeg"/>
-        <constructor-arg ref="toshibaHead"/>
+        <constructor-arg ref="sonyHand"/>
+        <constructor-arg ref="sonyLeg"/>
+        <constructor-arg ref="sonyHead"/>
     </bean>
 </beans>
