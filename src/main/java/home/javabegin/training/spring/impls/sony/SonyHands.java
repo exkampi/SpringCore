@@ -1,7 +1,9 @@
 package home.javabegin.training.spring.impls.sony;
 
 import home.javabegin.training.spring.interfaces.Hands;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SonyHands implements Hands {
 	
 	public void catchSomething(){

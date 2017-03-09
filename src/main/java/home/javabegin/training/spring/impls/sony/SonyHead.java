@@ -1,7 +1,9 @@
 package home.javabegin.training.spring.impls.sony;
 
 import home.javabegin.training.spring.interfaces.Head;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SonyHead implements Head{
 	
 	public void calc(){

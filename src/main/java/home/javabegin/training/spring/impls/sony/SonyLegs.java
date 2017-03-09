@@ -1,7 +1,9 @@
 package home.javabegin.training.spring.impls.sony;
 
 import home.javabegin.training.spring.interfaces.Legs;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SonyLegs implements Legs {
 	
 	public void go(){
