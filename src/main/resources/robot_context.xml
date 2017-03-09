@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true"
        default-init-method="init"
@@ -14,14 +13,12 @@
     <bean id="actionReplacer" class="home.javabegin.training.spring.impls.robot.ActionReplacer"/>
 
     <bean id="t1000" class="home.javabegin.training.spring.impls.robot.ModelT1000"
-          p:hands-ref="toshibaHand"
-          p:head-ref="toshibaHead"
-          p:legs-ref="toshibaLeg"
-        scope="prototype">
+        scope="prototype"
+        autowire="byType">
 
-        <constructor-arg index="0" value="silver" type="java.lang.String"/>
-        <constructor-arg index="1" value="2006" type="int"/>
-        <constructor-arg index="2" value="true" type="boolean"/>
+        <!--<constructor-arg index="0" value="silver" type="java.lang.String"/>-->
+        <!--<constructor-arg index="1" value="2006" type="int"/>-->
+        <!--<constructor-arg index="2" value="true" type="boolean"/>-->
 
         <replaced-method name="action" replacer="actionReplacer"/>
 
@@ -34,6 +31,10 @@
           parent="baseModel"
           depends-on="databaseBean">
         <property name="head" ref="sonyHead"/>
+    </bean>
+
+    <bean id="t1000Conveyor" class="home.javabegin.training.spring.impls.conveyor.T1000Conveyor">
+        <lookup-method name="createRobot" bean="t1000"/>
     </bean>
 
     <bean id="t1000Pool" class="home.javabegin.training.spring.impls.robot.pool.T1000Pool">
@@ -66,8 +67,8 @@
     </bean>
 
     <bean id="baseModel" abstract="true">
-        <constructor-arg ref="sonyHand"/>
-        <constructor-arg ref="sonyLeg"/>
-        <constructor-arg ref="sonyHead"/>
+        <!--<constructor-arg ref="sonyHand"/>-->
+        <!--<constructor-arg ref="sonyLeg"/>-->
+        <!--<constructor-arg ref="sonyHead"/>-->
     </bean>
 </beans>
