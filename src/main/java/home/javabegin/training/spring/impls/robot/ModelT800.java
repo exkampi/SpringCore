@@ -5,45 +5,53 @@ import home.javabegin.training.spring.interfaces.Head;
 import home.javabegin.training.spring.interfaces.Legs;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-public class ModelT800 extends BaseModel implements InitializingBean, DisposableBean{
+public class ModelT800 implements InitializingBean, DisposableBean{
 
-    private String color;
-    private int year;
-    private boolean soundEnabled;
+    @Autowired
+    @Qualifier("toshibaHand")
+    private Hands hands;
 
-    public ModelT800() {
+    @Autowired
+    @Qualifier("toshibaLeg")
+    private Legs legs;
+
+    @Autowired
+    @Qualifier("toshibaHead")
+    private Head head;
+
+    public Hands getHands() {
+        return hands;
     }
 
-    public ModelT800(Hands hands, Legs legs, Head head) {
-        super(hands, legs, head);
+    public void setHands(Hands hands) {
+        this.hands = hands;
     }
 
-    public ModelT800(String color, int year, boolean soundEnabled) {
-        this.color = color;
-        this.year = year;
-        this.soundEnabled = soundEnabled;
+    public Legs getLegs() {
+        return legs;
     }
 
-    public ModelT800(Hands hands, Legs legs, Head head, String color, int year, boolean soundEnabled) {
-
-        super(hands, legs, head);
-        this.color = color;
-        this.year = year;
-        this.soundEnabled = soundEnabled;
+    public void setLegs(Legs legs) {
+        this.legs = legs;
     }
 
-    @Override
+    public Head getHead() {
+        return head;
+    }
+
+    public void setHead(Head head) {
+        this.head = head;
+    }
+
     public void action() {
-        getHead().calc();
-        getHands().catchSomething();
-        getLegs().go();
-        System.out.println("color: " + color);
-        System.out.println("year: " + year);
-        System.out.println("can play sound: " + soundEnabled);
+        head.calc();
+        hands.catchSomething();
+        legs.go();
     }
 
-    @Override
     public void dance() {
         System.out.println("T800 is dancing!");
     }
