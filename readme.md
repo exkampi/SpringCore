@@ -183,9 +183,34 @@ __Сканирование компонентов__
 3. Методы `@Bean(initMethod = "init", destroyMethod = "destroy")`.
 
 __Стандартные аннотации Java__
+ 
+* JSR-250 Common Annotation for the Java Platform(Общие аннотации, применяемые в Java);
+* JSR-299 Context and Dependency Injection for Java(CDI)(Расширение спецификации JSR-330);
+* JSR-330 Dependency Injection for Java(Внедрение зависимостей в Java).
 
-* JSR-330, JSR-250, JSR-299;
-* `@Resource`
-* `@Inject`
-* `@Named`
+Рекомендуется использовать стандартные аннотации, где это возможно(для лучшей переносимости).
 
+|Spring|javax.inject.*|javax.inject restrictions/comments|
+|:-|:-|:-|
+|`@Autowired`|`@Inject`|`@Inject` has no 'required' attribute; can be used with Java 8’s Optional instead.|
+|`@Component`|`@Named`/`@ManagedBean`|JSR-330 does not provide a composable model, just a way to identify named components.|
+|`@Scope`("singleton")|`@Singleton`|The JSR-330 default scope is like Spring’s prototype. However, in order to keep it consistent with Spring’s general defaults, a JSR-330 bean declared in the Spring container is a singleton by default. In order to use a scope other than singleton, you should use Spring’s `@Scope` annotation. javax.inject also provides a `@Scope` annotation. Nevertheless, this one is only intended to be used for creating your own annotations.|
+|`@Qualifier`|`@Qualifier`/`@Named`|javax.inject.Qualifier is just a meta-annotation for building custom qualifiers. Concrete String qualifiers (like Spring’s `@Qualifier` with a value) can be associated through javax.inject.Named.|
+|`@Value`|-|no equivalent|
+|`@Required`|-|no equivalent|
+|`@Lazy`|-|no equivalent|
+
+__Различия аннотаций:__
+
+* `@Resource`, `@Inject`, `@Autowired`;
+    - Отличаются порядком поиска объектов для внедрения(по типу, по имени);
+    - `@Resource` чаще всего ссылается на внешний ресурс(датасорс, файл);
+    - `@Inject` внедрение объекта приложения;
+* `@Component`, `@Repository`, `@Controller`, `@Service`;
+    - Смысловое отличие;
+    - `@Component` для всех компонентов Spring контейнера;
+    - `@Repository` для классов, работающих с базой данных;
+    - `@Controller` для веб приложений;
+    - `@Service` для сервисов.
+
+__Reference Implementation(RI)__ - эталонная реализация спецификации.
